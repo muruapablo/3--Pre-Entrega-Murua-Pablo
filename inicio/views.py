@@ -2,14 +2,15 @@ from django.shortcuts import render
 from inicio.models import Camaras
 
 def inicio(request):
-    return render(request, 'inicio.html',{})
+   
+    return render(request, 'inicio/inicio.html', {})
 
-def Camaras(request):
-    Camaras = Camaras(marca='Sony', descripcion='A7II - Camara full frame', anio=2022)
-    Camaras.save()
+def camaras(request):
+    camara = Camaras(marca='Sony', modelo = 'A7 III', descripcion = 'Camara full frame', anio =2022)
+    camara.save()
 
-    return render(request, 'inicio/Camaras.html' ,{'Camaras': Camaras}) 
+    return render(request, 'inicio/camaras.html', {'camara': camara}) 
 
 
-def crear_Camaras(request):
-    return 
+# def crear_Camaras(request):
+#     return 
