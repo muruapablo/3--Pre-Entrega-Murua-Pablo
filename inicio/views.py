@@ -1,16 +1,47 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from inicio.models import Camaras
+from inicio.forms import CrearCamaraFormulario
 
 def inicio(request):
    
     return render(request, 'inicio/inicio.html', {})
 
 def camaras(request):
-    camara = Camaras(marca='Sony', modelo = 'A7 III', descripcion = 'Camara full frame', anio =2022)
-    camara.save()
+    
+    Listado_de_Camaras = Camaras.objects.all()
+  
 
-    return render(request, 'inicio/camaras.html', {'camara': camara}) 
+    return render(request, 'inicio/camaras.html',{'Listado_de_Camaras': Listado_de_Camaras}) 
 
 
 def crear_camara(request):
-    return render(request, 'inicio/crear_camaras.html', {}) 
+    
+    # if request.method == 'POST': 
+    #     marca = request.POST.get('marca')
+    #     modelo = request.POST.get('modelo') 
+    #     descripcion = request.POST.get('descripcion')
+    #     anio = request.POST.get('anio')     
+    
+    #     camara = Camaras(marca=marca, modelo=modelo, descripcion=descripcion, anio=anio)
+    #     camara.save()
+    if request.method == 'POST':
+        formulario = CrearCamaraFormulario(request.POST)
+        if formulario.is_valid():
+            info_limpia = formulario.cleaned_data
+            
+            marca = info_limpia.get('marca')
+            modelo = info_limpia.get('modelo') 
+            descripcion = info_limpia.get('descripcion')
+            anio = info_limpia.get('anio')     
+    
+            camara = Camaras(marca=marca, modelo=modelo, descripcion=descripcion, anio=anio)
+            camara.save()
+            
+            return redirect('camaras')
+        else:
+            return render(request, 'inicio/crear_camaras.html', {'formulario':formulario})          
+        
+        
+    
+    formulario = CrearCamaraFormulario()
+    return render(request, 'inicio/crear_camaras.html', {'formulario':formulario}) 

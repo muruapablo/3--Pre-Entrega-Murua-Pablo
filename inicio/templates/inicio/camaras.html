@@ -9,9 +9,15 @@ Camaras Stock
 {% endblock h1_header %}
 
 {% block main %}
-Tipo de Camara : {{camara.descripcion}}
+
+<ul> 
+    {% for camaras in Listado_de_Camaras  %}
+    <li>{{camaras}}</li>
+    {% endfor %}
+
+    
 {% endblock main %}
 
-{% block section %}
+{% comment %} {% block section %}
 Descripción: {{camara.descripcion}}
-{% endblock section %}
+{% endblock section %} {% endcomment %}
