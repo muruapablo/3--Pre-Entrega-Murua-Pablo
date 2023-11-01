@@ -12,5 +12,5 @@ def camaras(request):
     return render(request, 'inicio/camaras.html', {'camara': camara}) 
 
 
-# def crear_Camaras(request):
-#     return 
+def crear_camara(request):
+    return render(request, 'inicio/crear_camaras.html', {}) 
