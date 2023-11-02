@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from inicio.models import Camaras
-from inicio.forms import CrearCamaraFormulario
+from inicio.forms import CrearCamaraFormulario, BusquedaCamaraFormulario
 
 def inicio(request):
    
@@ -9,6 +9,12 @@ def inicio(request):
 def camaras(request):
     
     Listado_de_Camaras = Camaras.objects.all()
+    
+    formulario = BusquedaCamaraFormulario(request.GET)
+    if formulario.is_valid():
+        marca_a_buscar= formulario.cleaned_data.get('marca')
+        Listado_de_Camaras = Camaras.objects.filter(marca__icontains=marca_a_buscar)
+    
   
 
     return render(request, 'inicio/camaras.html',{'Listado_de_Camaras': Listado_de_Camaras}) 
