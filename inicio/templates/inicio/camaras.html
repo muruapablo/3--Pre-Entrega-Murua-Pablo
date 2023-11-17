@@ -15,14 +15,42 @@ Camaras Stock
 </form>
 
 
-<ul> 
-    {% for camaras in Listado_de_Camaras  %}
-    <li>{{camaras}}</li>
-    {% endfor %}
-
+{% if Listado_de_Camaras %}
+{% comment %} <ul> 
+    {% for camaras in Listado_de_Camaras %}
+    <li>{{camaras}} | </li> 
+    {% endfor %} {% endcomment %}
     
+    
+        {% for camara in Listado_de_Camaras %}
+            <li>
+                {{ camara.marca }} | {{ camara.modelo }} | {{ camara.descripcion }} | {{ camara.anio }}
+                <form method="post" action="{% url 'eliminar_camara' camara.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Borrar</button>
+                </form>
+            </li> 
+        {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% else %}
+<p>No se encontraron Camaras</p>
+{% endif %}    
 {% endblock main %}
 
-{% comment %} {% block section %}
+{% block section %}
 Descripción: {{camara.descripcion}}
-{% endblock section %} {% endcomment %}
+{% endblock section %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title> Crear Microfono </title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Crear Microfono
+{% endblock h1_header %}
+
+{% block main %}
+
+{% comment %} <form action="" method="POST">
+    {% csrf_token %} {% endcomment %}
+
+    {% comment %} <p>
+        Marca:
+        <input type="text" name="marca">
+    </p>
+   <p>
+        Modelo:
+        <input type="text" name="modelo">
+   </p>
+    <p>
+        Descripción: 
+        <input type="text" name="descripcion">
+    </p>
+    <p>
+        Año:
+        <input type="number" name="anio">
+    </p>
+    
+    <input type="submit" value="Cargar"> {% endcomment %}
+<form action="" method="POST">
+        {% csrf_token %}
+        {{formulario}}
+        <input type="submit" value="Crear">    
+ </form>
+
+{% endblock main %}

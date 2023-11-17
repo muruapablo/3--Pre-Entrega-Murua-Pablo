@@ -20,11 +20,16 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href={% url "inicio" %}>Video Store</a>
+                <a class="navbar-brand" href={% url "about_me" %}>Nosotros</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href={% url "camaras" %}>Camaras</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href={% url "tripodes" %}>Tripodes</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href={% url "microfonos" %}>Microfonos</a></li>
                         {% comment %} <li class="nav-item"><a class="nav-link active" aria-current="page" href={% url "crear_camaras" %}>Cargar Camaras</a></li> {% endcomment %}
+                        <li class="nav-item"><a class="nav-link" href= {% url "crear_microfono" %}>Cargar Microfonos</a></li>
+                        <li class="nav-item"><a class="nav-link" href= {% url "crear_tripode" %}>Cargar Tripodes</a></li>
                         <li class="nav-item"><a class="nav-link" href= {% url "crear_camaras" %}>Cargar Camaras</a></li>
                         {% comment %} <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li> {% endcomment %}
                     </ul>
@@ -45,19 +50,24 @@
             </div>
         </header>
         <!-- Content section-->
-        {% comment %} {% block section %}
-        {% block section %} {% endcomment %}
+     
+       
         <section class="py-5">
+                        
             <div class="container my-5">
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
-                        <h2>El lugar ideal para productores creativos</h2>
-                        <p class="lead">Somos una empresa apasionada que entrega asesoria a cineastas, fotógrafos, sonidistas, animadores, desarrolladores y creadores que les interese desarrollar contenido y así  alcanzar sus objetivos</p>
-                        {% comment %} <p class="mb-0">The universe is almost 14 billion years old, and, wow! Life had no problem starting here on Earth! I think it would be inexcusably egocentric of us to suggest that we're alone in the universe.</p> {% endcomment %}
+                      
+                        <h2>El lugar ideal para productores creativos</h2> 
+                         {% block about_me %}
+                            <p class="lead"><p>Equipamiento multimedia para tus producciones y el asesoramiento de nuestros especialistas</p>
+                        {% endblock about_me %}
                     </div>
                 </div>
             </div>
+            
         </section>
+      
         <main>
             {% block main %}
             

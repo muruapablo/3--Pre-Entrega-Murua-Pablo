@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title>Tripodes </title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Tripodes en Stock 
+{% endblock h1_header %}
+
+{% block main %}
+<form action="">
+    <input type="text" name="marca" placeholder="Manfrotto, Benro, Peak Design,Vanguard, ...">
+    <input type="submit" value="Buscar">
+</form>
+
+
+{% if Listado_de_Tripodes %}
+<ul> 
+    {% for tripodes in Listado_de_Tripodes  %}
+    <li>{{tripodes}}</li>
+    {% endfor %}
+<ul>
+{% else %}
+<p>No se encontraron Tripodes</p>
+{% endif %}    
+{% endblock main %}

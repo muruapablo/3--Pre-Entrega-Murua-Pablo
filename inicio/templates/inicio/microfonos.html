@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title> Microfonos </title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Microfonos en Stock 
+{% endblock h1_header %}
+
+{% block main %}
+<form action="">
+    <input type="text" name="marca" placeholder="Shure, AKG, Sennheiser, Samson, ...">
+    <input type="submit" value="Buscar">
+</form>
+
+
+{% if Listado_de_Microfonos %}
+<ul> 
+    {% for microfonos in Listado_de_Microfonos  %}
+    <li>{{microfonos}}</li>
+    {% endfor %}
+<ul>
+{% else %}
+<p>No se encontraron Microfonos</p>
+{% endif %}    
+{% endblock main %}
