@@ -6,7 +6,7 @@ from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 
 from cuentas.forms import MiFormularioDeCreacion, EdicionPerfil
-# from cuentas.models import DatosExtra
+from cuentas.models import DatosExtra
 
 
 def login(request):
@@ -23,7 +23,7 @@ def login(request):
             
             django_login(request, user)
             
-            # DatosExtra.objects.get_or_create(user=request.user)
+            DatosExtra.objects.get_or_create(user=request.user)
             
             return redirect('inicio')
               
