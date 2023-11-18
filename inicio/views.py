@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from inicio.models import Camaras,Tripode, Microfono
 from inicio.forms import CrearCamaraFormulario, BusquedaCamaraFormulario,CrearTripodeFormulario, BusquedaTripodeFormulario, CrearMicrofonoFormulario, BusquedaMicrofonoFormulario, ActualizarCamaraFormulario
+from django.contrib.auth.decorators import login_required
 
 def inicio(request):
    
@@ -19,7 +20,7 @@ def camaras(request):
     formulario = BusquedaCamaraFormulario()
     return render(request, 'inicio/camaras.html', {'formulario': formulario, 'Listado_de_Camaras': Listado_de_Camaras})
 
-
+@login_required
 def crear_camara(request):
     
     # if request.method == 'POST': 
@@ -54,12 +55,12 @@ def crear_camara(request):
     
     formulario = CrearCamaraFormulario()
     return render(request, 'inicio/crear_camaras.html', {'formulario': formulario})
-
+@login_required
 def eliminar_camara(request, camara_id):
     camara_a_eliminar = Camaras.objects.get(id=camara_id)
     camara_a_eliminar.delete()
     return redirect('camaras')
-
+@login_required
 def actualizar_camara(request, camara_id):
     camara_a_actualizar = Camaras.objects.get(id=camara_id)
     

@@ -32,7 +32,13 @@
                         {% comment %} <li class="nav-item"><a class="nav-link" href= {% url "crear_microfono" %}>Cargar Microfonos</a></li>
                         <li class="nav-item"><a class="nav-link" href= {% url "crear_tripode" %}>Cargar Tripodes</a></li>
                         <li class="nav-item"><a class="nav-link" href= {% url "crear_camaras" %}>Cargar Camaras</a></li> {% endcomment %}
-                        {% comment %} <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li> {% endcomment %}
+                        {% if not request.user.is_authenticated%}
+                        <li class="nav-item"><a class="btn btn-primary" href={% url "login" %}>Iniciar Sesion</a></li>
+                        <li class="nav-item"><a class="btn btn-secondary" href={% url "registrarse" %}>Registrarse</a></li> 
+                        {% else %}
+                        <p> {{request.user.username}}</p>
+                        <li class="nav-item"><a class="btn btn-warning" href={% url "logout" %}>Cerrar Sesion</a></li>    
+                        {% endif %}
                     </ul>
                 </div>
             </div>
