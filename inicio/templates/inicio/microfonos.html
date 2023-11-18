@@ -9,6 +9,10 @@ Microfonos en Stock
 {% endblock h1_header %}
 
 {% block main %}
+<p>
+    <a href={% url "crear_microfono" %}>Crear Microfono</a>
+</p>
+
 <form action="">
     <input type="text" name="marca" placeholder="Shure, AKG, Sennheiser, Samson, ...">
     <input type="submit" value="Buscar">

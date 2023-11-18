@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title> Lentes {{lentes.id}}</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Lentes {{lentes.id}}
+{% endblock h1_header %}
+
+{% block main %}
+<ul>
+    <li>Marca: {{lentes.marca}}</li>
+    <li>Modelo: {{lentes.modelo}}</li>
+    <li>Descripción: {{lentes.descripcion | safe }}</li>
+    <li>Año: {{lentes.anio}}</li>
+</ul>
+
+
+{% endblock main %}

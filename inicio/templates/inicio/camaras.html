@@ -9,6 +9,10 @@ Camaras Stock
 {% endblock h1_header %}
 
 {% block main %}
+<p>
+    <a href={% url "crear_camaras" %}>Crear Camaras</a>
+</p>
+
 <form action="">
     <input type="text" name="marca" placeholder="Sony, Canon, Nikon, Pentax, ...">
     <input type="submit" value="Buscar">

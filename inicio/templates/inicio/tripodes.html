@@ -9,6 +9,10 @@ Tripodes en Stock
 {% endblock h1_header %}
 
 {% block main %}
+<p>
+    <a href={% url "crear_tripode" %}>Crear Tripode</a>
+</p>
+
 <form action="">
     <input type="text" name="marca" placeholder="Manfrotto, Benro, Peak Design,Vanguard, ...">
     <input type="submit" value="Buscar">
