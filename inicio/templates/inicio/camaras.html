@@ -29,6 +29,14 @@ Camaras Stock
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger btn-sm">Borrar</button>
                 </form>
+                <form method="post" action="{% url 'actualizar_camara' camara.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary btn-sm">Actualizar</button>
+                </form>
+                <form method="post" action="{% url 'detalle_camara' camara.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success btn-sm">Detalle</button>
+                </form>
             </li> 
         {% endfor %}
 

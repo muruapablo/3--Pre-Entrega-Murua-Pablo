@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+<title> Camaras {{camara.id}}</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Camara {{camara.id}}
+{% endblock h1_header %}
+
+{% block main %}
+<ul>
+    <li>Marca: {{camara.marca}}</li>
+    <li>Modelo: {{camara.modelo}}</li>
+    <li>Descripción: {{camara.descripcion | safe }}</li>
+    <li>Año: {{camara.anio}}</li>
+</ul>
+
+
+{% endblock main %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from inicio.models import Camaras,Tripode, Microfono
-from inicio.forms import CrearCamaraFormulario, BusquedaCamaraFormulario,CrearTripodeFormulario, BusquedaTripodeFormulario, CrearMicrofonoFormulario, BusquedaMicrofonoFormulario 
+from inicio.forms import CrearCamaraFormulario, BusquedaCamaraFormulario,CrearTripodeFormulario, BusquedaTripodeFormulario, CrearMicrofonoFormulario, BusquedaMicrofonoFormulario, ActualizarCamaraFormulario
 
 def inicio(request):
    
@@ -59,6 +59,32 @@ def eliminar_camara(request, camara_id):
     camara_a_eliminar = Camaras.objects.get(id=camara_id)
     camara_a_eliminar.delete()
     return redirect('camaras')
+
+def actualizar_camara(request, camara_id):
+    camara_a_actualizar = Camaras.objects.get(id=camara_id)
+    
+    if request.method == "POST":
+        formulario = ActualizarCamaraFormulario(request.POST)
+        if formulario.is_valid():
+            info_nueva = formulario.cleaned_data
+            
+            camara_a_actualizar.marca = info_nueva.get('marca')
+            camara_a_actualizar.modelo = info_nueva.get('modelo')
+            camara_a_actualizar.descripcion = info_nueva.get('descripcion')
+            camara_a_actualizar.anio = info_nueva.get('anio')
+            
+            camara_a_actualizar.save()
+            return redirect('camaras')
+        else:
+            return render(request, 'inicio/actualizar_camara.html', {'formulario': formulario})
+        
+    formulario = ActualizarCamaraFormulario(initial={'marca': camara_a_actualizar.marca, 'modelo': camara_a_actualizar.modelo,'descripcion': camara_a_actualizar.descripcion,'anio': camara_a_actualizar.anio})
+    return render(request, 'inicio/actualizar_camara.html', {'formulario': formulario})
+
+def detalle_camara(request, camara_id):
+    camara = Camaras.objects.get(id=camara_id)
+    return render(request, 'inicio/detalle_camara.html', {'camara': camara})
+
 
 
 def about_me(request):
