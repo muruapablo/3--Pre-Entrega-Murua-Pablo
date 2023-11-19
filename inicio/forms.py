@@ -1,9 +1,10 @@
 from django import forms
- 
+from inicio.models import Camaras
+from ckeditor.fields import RichTextFormField
 class CrearCamaraFormulario(forms.Form):
     marca = forms.CharField(max_length=30)
     modelo = forms.CharField (max_length=30)
-    descripcion = forms.CharField(max_length=250)
+    descripcion = RichTextFormField()
     anio = forms.IntegerField()
     
 class BusquedaCamaraFormulario(forms.Form):

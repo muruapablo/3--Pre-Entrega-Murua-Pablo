@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'inicio',
     'lentes',
     'cuentas',
+    'ckeditor'
 ]
 
 MIDDLEWARE = [

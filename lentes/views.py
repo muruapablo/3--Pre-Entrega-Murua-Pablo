@@ -11,6 +11,14 @@ class ListadoLentes(ListView):
     model = Lentes
     context_object_name = 'Listado_de_Lentes'
     template_name = 'lentes/lentes.html'
+    
+    def get_queryset(self):
+        marca = self.request.GET.get('marca', '')
+        if marca:
+            Listado_de_Lentes = self.model.objects.filter(marca__icontains=marca)
+        else:
+            Listado_de_Lentes = self.model.objects.all()
+        return Listado_de_Lentes
 
 class CrearLentes(LoginRequiredMixin,CreateView):
     model = Lentes
