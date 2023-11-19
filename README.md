@@ -1,4 +1,4 @@
-Entrega-Murua-Pablo
+Entrega-Murua-Pablo trabajo final curso Python 
 Pagina web de equipamiento de foto y video, con la opción de cargar, actualizar y buscar en el apartado camaras.
 Cargar y buscar tripodes
 Cargar y buscar microfonos 
