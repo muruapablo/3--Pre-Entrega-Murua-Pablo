@@ -10,7 +10,8 @@ Los usuarios registrados pueden eliminar y modificar productos.
 En el caso de buscar productos, se puede hacer son letras mayusculas y minúsculas y hasta con un fragmento del nombre del producto.
 Trabaja con texto enriquecido en los apartados detalles y descripcion, para crear actualizar cámaras.
 
-
+Video que muestre la pagina y sus funcionalidades [video de la web diseñada en Python
+](https://youtu.be/hjlRg3GQ2vE)
 
 
 
