@@ -29,6 +29,14 @@ def login(request):
               
     return render(request, 'cuentas/login.html', {'formulario_de_login': formulario})
 
+def ver_perfil(request):
+    datos_extra = DatosExtra.objects.get_or_create(user=request.user)
+    return render(request, 'cuentas/ver_perfil.html', {'datos_extra': datos_extra})  
+
+
+
+
+
 def registro(request):
     formulario = MiFormularioDeCreacion()
     
@@ -71,3 +79,5 @@ def editar_perfil(request):
 class CambiarPassword(PasswordChangeView):
     template_name = 'cuentas/cambiar_password.html'
     success_url = reverse_lazy('editar_perfil')
+    
+  
