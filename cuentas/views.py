@@ -25,7 +25,7 @@ def login(request):
             
             DatosExtra.objects.get_or_create(user=request.user)
             
-            return redirect('inicio')
+            return redirect('ver_perfil')
               
     return render(request, 'cuentas/login.html', {'formulario_de_login': formulario})
 

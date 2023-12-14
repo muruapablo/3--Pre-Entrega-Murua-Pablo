@@ -13,7 +13,7 @@ Camaras Stock
     <a href={% url "crear_camaras" %}>Crear Camaras</a>
 </p>
 
-<form action={% url "camaras" %}>
+<form action={% url "camaras" %} enctype='multipart/form-data' > 
     <input type="text" name="marca" placeholder="Sony, Canon, Nikon, Pentax, ...">
     <input type="submit" value="Buscar">
 </form>
@@ -49,8 +49,8 @@ Camaras Stock
     <ul>
         {% for camara in Listado_de_Camaras %}
         {% comment %} <li> {{lentes}}</li> {% endcomment %}
-       
-    <li><a href={% url "detalle_camara" camara.id %}>{{camara|safe }}</a> | <a href={% url "actualizar_camara" camara.id %}>Actualizar</a> | <a href={% url "eliminar_camara" camara.id %}>Eliminar</a>
+      
+    <li><a>{{form.foto.label}}foto{{form.foto }}></a><a href={% url "detalle_camara" camara.id %}>{{camara|safe }}</a> | <a href={% url "actualizar_camara" camara.id %}>Actualizar</a> | <a href={% url "eliminar_camara" camara.id %}>Eliminar</a>
     </li> 
         {% endfor %}
     </ul>

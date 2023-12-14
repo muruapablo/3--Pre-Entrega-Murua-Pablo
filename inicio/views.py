@@ -39,8 +39,9 @@ def crear_camara(request):
             marca = info_limpia.get('marca')
             modelo = info_limpia.get('modelo') 
             descripcion = info_limpia.get('descripcion')
-            anio = info_limpia.get('anio')     
-    
+            anio = info_limpia.get('anio')
+            foto = info_limpia.get('foto')     
+   
             camara = Camaras(marca=marca.lower(), modelo=modelo, descripcion=descripcion, anio=anio)
             camara.save()
             
