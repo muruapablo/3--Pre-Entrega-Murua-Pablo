@@ -12,9 +12,8 @@ Perfil de {{ request.user.username }}
 <p>Nombre: {{ request.user.first_name }}</p>
 <p>Apellido: {{ request.user.last_name }}</p>
 <p>Email: {{ request.user.email }}</p>
-<p>Biografía: {{ datos_extra.biografia }}</p>
+<p>Biografía: {{ request.user.datosextra.biografia }}</p>
 <p>Avatar: <img src={{request.user.datosextra.avatar.url}} alt="avatar" height='46px'></p>
-
 <a href="{% url 'editar_perfil' %}">Editar Perfil</a>
 <a href="{% url 'cambiar_password' %}">Cambiar Contraseña</a>
 <a class="btn btn-secondary" href="{% url 'inicio' %}">Inicio</a>
