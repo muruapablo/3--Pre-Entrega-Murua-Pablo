@@ -53,13 +53,14 @@ def crear_camara(request):
     formulario = CrearCamaraFormulario()
     return render(request, 'inicio/crear_camaras.html', {'formulario':formulario})
     
-    formulario = CrearCamaraFormulario()
-    return render(request, 'inicio/crear_camaras.html', {'formulario': formulario})
+    # formulario = CrearCamaraFormulario()
+    # return render(request, 'inicio/crear_camaras.html', {'formulario': formulario})
 @login_required
 def eliminar_camara(request, camara_id):
     camara_a_eliminar = Camaras.objects.get(id=camara_id)
     camara_a_eliminar.delete()
     return redirect('camaras')
+
 @login_required
 def actualizar_camara(request, camara_id):
     camara_a_actualizar = Camaras.objects.get(id=camara_id)

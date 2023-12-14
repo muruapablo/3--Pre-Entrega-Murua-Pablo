@@ -13,7 +13,7 @@ class BusquedaCamaraFormulario(forms.Form):
 class ActualizarCamaraFormulario(forms.Form):
     marca = forms.CharField(max_length=30)
     modelo = forms.CharField (max_length=30)
-    descripcion = forms.CharField(max_length=250)
+    descripcion = RichTextFormField()
     anio = forms.IntegerField()
    
 class CrearTripodeFormulario(forms.Form):

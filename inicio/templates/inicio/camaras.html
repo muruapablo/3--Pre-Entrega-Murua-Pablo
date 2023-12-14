@@ -13,20 +13,20 @@ Camaras Stock
     <a href={% url "crear_camaras" %}>Crear Camaras</a>
 </p>
 
-<form action="">
+<form action={% url "camaras" %}>
     <input type="text" name="marca" placeholder="Sony, Canon, Nikon, Pentax, ...">
     <input type="submit" value="Buscar">
 </form>
 
 
-{% if Listado_de_Camaras %}
-{% comment %} <ul> 
+{% comment %} {% if Listado_de_Camaras %}
+<ul> 
     {% for camaras in Listado_de_Camaras %}
     <li>{{camaras}} | </li> 
-    {% endfor %} {% endcomment %}
+    {% endfor %} 
+   
     
-    
-        {% for camara in Listado_de_Camaras %}
+         {% for camara in Listado_de_Camaras %}
             <li>
                 {{ camara.marca }} | {{ camara.modelo }} | {{ camara.descripcion }} | {{ camara.anio }}
                 <form method="post" action="{% url 'eliminar_camara' camara.id %}">
@@ -42,8 +42,20 @@ Camaras Stock
                     <button type="submit" class="btn btn-success btn-sm">Detalle</button>
                 </form>
             </li> 
-        {% endfor %}
+        {% endfor %} {% endcomment %}
 
+            
+{% if Listado_de_Camaras %} 
+    <ul>
+        {% for camara in Listado_de_Camaras %}
+        {% comment %} <li> {{lentes}}</li> {% endcomment %}
+       
+    <li><a href={% url "detalle_camara" camara.id %}>{{camara|safe }}</a> | <a href={% url "actualizar_camara" camara.id %}>Actualizar</a> | <a href={% url "eliminar_camara" camara.id %}>Eliminar</a>
+    </li> 
+        {% endfor %}
+    </ul>
+           
+    
 
 
 
