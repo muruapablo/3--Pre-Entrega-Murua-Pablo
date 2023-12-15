@@ -6,7 +6,7 @@ class Camaras(models.Model):
     modelo = models.CharField (max_length=30)
     descripcion = RichTextField()
     anio = models.IntegerField()
-    foto = models.ImageField(upload_to='images/', blank=True, null=True)
+    foto = models.ImageField(upload_to='images', blank=True, null=True)
     
     def __str__(self):
         return f' {self.id} - {self.marca} - {self.modelo} - {self.descripcion} - {self.anio} - {self.foto}' 

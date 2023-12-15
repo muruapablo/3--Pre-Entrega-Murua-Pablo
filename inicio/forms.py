@@ -17,10 +17,11 @@ class ActualizarCamaraFormulario(forms.Form):
     descripcion = RichTextFormField()
     anio = forms.IntegerField()
     foto = forms.ImageField(required=False)
-class Meta:
-    model = Camaras
-    fields = ['marca', 'modelo', 'descripcion', 'anio', 'foto']    
-   
+    
+    class Meta:
+        model = Camaras
+        fields = ['marca', 'modelo', 'descripcion', 'anio', 'foto']    
+  
 class CrearTripodeFormulario(forms.Form):
     marca = forms.CharField(max_length=30)
     modelo = forms.CharField (max_length=30)

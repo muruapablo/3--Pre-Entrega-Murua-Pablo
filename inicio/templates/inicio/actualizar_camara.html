@@ -14,7 +14,7 @@ Actualizar Camara
         {% csrf_token %}
         <table>
             {{formulario.media}}
-            {{formulario}}
+            {{ formulario.as_table }}
         </table>
         <input type="submit" value="Actualizar">    
 </form>

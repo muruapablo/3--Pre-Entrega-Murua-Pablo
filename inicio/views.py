@@ -23,16 +23,8 @@ def camaras(request):
 @login_required
 def crear_camara(request):
     
-    # if request.method == 'POST': 
-    #     marca = request.POST.get('marca')
-    #     modelo = request.POST.get('modelo') 
-    #     descripcion = request.POST.get('descripcion')
-    #     anio = request.POST.get('anio')     
-    
-    #     camara = Camaras(marca=marca, modelo=modelo, descripcion=descripcion, anio=anio)
-    #     camara.save()
     if request.method == 'POST':
-        formulario = CrearCamaraFormulario(request.POST)
+        formulario = CrearCamaraFormulario(request.POST, request.FILES)
         if formulario.is_valid():
             info_limpia = formulario.cleaned_data
             
@@ -42,7 +34,7 @@ def crear_camara(request):
             anio = info_limpia.get('anio')
             foto = info_limpia.get('foto')     
    
-            camara = Camaras(marca=marca.lower(), modelo=modelo, descripcion=descripcion, anio=anio)
+            camara = Camaras(marca=marca.lower(), modelo=modelo, descripcion=descripcion, anio=anio, foto=foto)
             camara.save()
             
             return redirect('camaras')
@@ -67,7 +59,7 @@ def actualizar_camara(request, camara_id):
     camara_a_actualizar = Camaras.objects.get(id=camara_id)
     
     if request.method == "POST":
-        formulario = ActualizarCamaraFormulario(request.POST)
+        formulario = ActualizarCamaraFormulario(request.POST,request.FILES)
         if formulario.is_valid():
             info_nueva = formulario.cleaned_data
             
@@ -75,6 +67,7 @@ def actualizar_camara(request, camara_id):
             camara_a_actualizar.modelo = info_nueva.get('modelo')
             camara_a_actualizar.descripcion = info_nueva.get('descripcion')
             camara_a_actualizar.anio = info_nueva.get('anio')
+            camara_a_actualizar.foto = info_nueva.get('foto') 
             
             camara_a_actualizar.save()
             return redirect('camaras')

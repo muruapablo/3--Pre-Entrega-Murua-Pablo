@@ -31,11 +31,11 @@ Crear Camara
     </p>
     
     <input type="submit" value="Cargar"> {% endcomment %}
-<form action="" method="POST">
+<form method="POST" action="" enctype='multipart/form-data'>
         {% csrf_token %}
         <table>
             {{formulario.media}}
-            {{formulario}}
+            {{formulario.as_table}}
         </table>
         <input type="submit" value="Crear">    
  </form>
